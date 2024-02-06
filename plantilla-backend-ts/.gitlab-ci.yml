@@ -1,0 +1,121 @@
+stages:
+  - login
+  - build
+  - push
+  - clean
+  - deploy
+
+#Iniciamos sesión en el repositorio privado de imagenes de docker
+iniciar sesion:
+  stage: login
+  script:
+    - docker login 127.0.0.1:5005 -u $REGISTRY_USER -p $REGISTRY_PASSWORD
+  only:
+    - main
+    - DEV
+
+#Construimos la imagen de producción en el servidor
+construir imagen prod:
+  stage: build
+  needs: [iniciar sesion]
+  script:
+    - docker build --no-cache -t $IMAGE_NAME .
+    - docker tag $IMAGE_NAME localhost:5005/$IMAGE_NAME:latest
+  only:
+    - main
+
+#Construimos la imagen de desarrollo en el servidor
+construir imagen dev:
+  stage: build
+  needs: [iniciar sesion]
+  script:
+    - docker build --no-cache -t $IMAGE_NAME_DEV .
+    - docker tag $IMAGE_NAME_DEV localhost:5005/$IMAGE_NAME_DEV:latest
+  only:
+    - DEV
+
+#Subimos la imagen de producción al repositorio privado local
+subir imagen prod:
+  stage: push
+  needs: [construir imagen prod]
+  script:
+    - docker push localhost:5005/$IMAGE_NAME:latest
+  only:
+    - main
+  variables:
+    #Se indica que para esta trabajo no se requiere el codigo fuente.
+    GIT_STRATEGY: none
+
+#Subimos la imagen de desarrollo al repositorio privado local
+subir imagen dev:
+  stage: push
+  needs: [construir imagen dev]
+  script:
+    - docker push localhost:5005/$IMAGE_NAME_DEV:latest
+  only:
+    - DEV
+  variables:
+    #Se indica que para esta trabajo no se requiere el codigo fuente.
+    GIT_STRATEGY: none
+
+#Limpiamos cache generada por la imagen
+limpiar cache prod:
+  stage: clean
+  needs: [subir imagen prod]
+  script: 
+    - docker image remove $IMAGE_NAME:latest
+    - docker image remove localhost:5005/$IMAGE_NAME
+  only:
+    - main
+  variables:
+    #Se indica que para esta trabajo no se requiere el codigo fuente.
+    GIT_STRATEGY: none
+
+#Limpiamos cache generada por la imagen
+limpiar cache dev:
+  stage: clean
+  needs: [subir imagen dev]
+  script: 
+    - docker image remove $IMAGE_NAME_DEV:latest
+    - docker image remove localhost:5005/$IMAGE_NAME_DEV
+  only:
+    - DEV
+  variables:
+    #Se indica que para esta trabajo no se requiere el codigo fuente.
+    GIT_STRATEGY: none
+
+deploy prod:
+  tags:
+    - deploy65
+  stage: deploy
+  needs: [subir imagen prod]
+  script: 
+    - cd /home/gitlab-runner/SIMONE2.0
+    - docker compose -f prod.yml pull backend
+    - docker compose -f prod.yml up --build -d backend
+  environment:
+    name: PROD
+    url: http://192.168.0.65:8094/simone/login
+  only:
+    - main
+  variables:
+    #Se indica que para esta trabajo no se requiere el codigo fuente.
+    GIT_STRATEGY: none
+
+deploy dev:
+  tags:
+    - deploy65
+  stage: deploy
+  needs: [subir imagen dev]
+  script: 
+    - cd /home/gitlab-runner/SIMONE2.0
+    - docker compose -f dev.yml pull backend
+    - docker compose -f dev.yml up --build -d backend
+  environment:
+    name: DEV
+    url: http://192.168.0.65:8093/simone/login
+  only:
+    - DEV
+  variables:
+    #Se indica que para esta trabajo no se requiere el codigo fuente.
+    GIT_STRATEGY: none

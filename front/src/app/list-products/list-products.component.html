@@ -1,0 +1,20 @@
+<p-card header="Nos menu" [style]="{width:'33%',margin:'auto','text-align':'center'}">
+    <p-table [value]="plats">
+        <ng-template pTemplate="header">
+          <tr>
+            <th [style]="{ 'text-align': 'center' }">Nombre</th>
+            <th [style]="{ 'text-align': 'center' }">Precio</th>
+            <th [style]="{ 'text-align': 'center' }">Imagen</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-plat>
+          <tr>
+            <td>{{ plat.nom }}</td>
+            <td>{{ plat.prix }}</td>
+            <td>
+              <img [src]="plat.image" alt="{{ plat.nom }}" style="max-width: 100px; max-height: 100px;">
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+</p-card>

@@ -1,0 +1,23 @@
+<p-sidebar [(visible)]="sidebarVisible">
+    <h3>Menú principal</h3>
+    <p-accordion>
+        <p-accordionTab header="Registro / Acceso">
+            <a routerLink="/form" style="color: black; text-decoration: none;" (click)="sidebarVisible=false">
+                Registrarse / Acceder                               
+            </a>
+        </p-accordionTab>
+        <p-accordionTab header="Nuestros productos">
+            <a routerLink="/lsproducts" style="color: black; text-decoration: none;"(click)="sidebarVisible=false">
+                El menú                      
+            </a>
+        </p-accordionTab>
+        <p-accordionTab header="Nuestros clientes">
+            <a routerLink="/lsclients" style="color: black; text-decoration: none;" (click)="click()">
+                Nuestros clientes
+            </a>
+            
+        </p-accordionTab>
+    </p-accordion>
+</p-sidebar>
+
+<p-button (click)="sidebarVisible = true" icon="pi pi-arrow-right"></p-button>

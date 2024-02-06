@@ -1,0 +1,65 @@
+<style>
+  @media screen and (max-width: 600px) {
+    .form-group {
+      flex-direction: column;
+    }
+
+    .responsive-card {
+      width: 50%; /* Adjust the width as needed for smaller screens */
+    }
+
+    .field {
+      width: 100%; /* Set the input fields to 100% width on smaller screens */
+    }
+  }
+</style>
+
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
+    <p-card class="form-group" [style]="{'margin':'auto', 'width':'100%','height':'500px', 'text-align':'center'}">
+        <ng-template pTemplate="header">
+            <div [style]="{'margin-top':'50px'}" class="form-group">
+            Acceda
+            </div>
+        </ng-template>
+        <div class="field" [style]="{'margin-top':'50px'}" class="form-group">
+            <span class="p-float-label" id="span1">
+            <input type="text" id="email" pInputText [(ngModel)]="user.email"> 
+            <label for="email">E-mail</label>
+            </span>
+        </div>
+        <div class="field" [style]="{'margin-top':'20px'}" class="form-group">
+            <span class="p-float-label">
+            <p-password inputId="motPasse" [(ngModel)]="user.password"></p-password>
+            <label for="motPasse">Contraseña</label>
+            </span>
+        </div>
+        <div class="field" class="form-group">
+            <button pButton type="button" [ngStyle]="{'margin-top':'10px'}" (click)="loginUser(user)">Acceder</button>
+        </div>
+        <div class="field" class="form-group">
+          <button pButton type="button" [ngStyle]="{'margin-top':'10px'}" (click)="deleteUser(user)">Baja</button>
+      </div>
+        <div class="field" class="form-group">
+          <button pButton type="button" [ngStyle]="{'margin-top':'10px'}" (click)="createUser(user)">Registrarse</button>
+      </div>
+      <div class="field" class="form-group">
+        <button pButton type="button" [ngStyle]="{'margin-top':'10px'}" (click)="getId(user)">Actualizar</button>
+      </div>
+      </p-card>
+      <p-dialog header="Login" [(visible)]="showModal" [modal]="true" [style]="{width: '300px'}">
+        <form>
+          <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" [(ngModel)]="username" pInputText>
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" [(ngModel)]="password" pInputText>
+          </div>
+          <button type="button" pButton label="Login" (click)="updateUser(id)"></button>
+          <button type="button" pButton label="Cancel" (click)="showModal = false"></button>
+        </form>
+      </p-dialog>
+</div>
+
+
