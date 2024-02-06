@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '../models/models';
 import { Observable } from 'rxjs';
+import { Output, EventEmitter } from '@angular/core';
 import { UserService } from '../service/service.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -14,18 +15,28 @@ export class FormUserComponent {
     email:'',
     password:''
   }
+  
   id:number
+  permiso:boolean
   constructor(private userService: UserService) { 
     this.id=0
+    this.permiso=false
+  }
+
+  @Output() newItemEvent = new EventEmitter<boolean>();
+  
+  addNewItem(value: boolean) {
+    this.newItemEvent.emit(value);
   }
 
   loginUser(user: User) {
-    
     this.userService.logUser(user).subscribe({
       //cuando se obtenga una respuesta del httpclient
       //haz esto:
        next: (response) => {
          alert(response);
+         this.permiso=true
+         this.addNewItem(this.permiso)
        },
        error: (err) => {
          console.error(err);
@@ -47,8 +58,9 @@ export class FormUserComponent {
        }
     });
    }
-   deleteUser(user: User) {
-    this.userService.deleteUser(user).subscribe({
+   deleteUser(email:string, password:string) {
+    this.userService.deleteUser(email,password).subscribe({
+      
       //cuando se obtenga una respuesta del httpclient
       //haz esto:
        next: (response) => {

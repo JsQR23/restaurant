@@ -18,8 +18,8 @@ export class UserService {
     
     return this.http.post(`http://localhost:3005/empleados/api/create`, user);
   }
-  deleteUser(user:User){
-    return this.http.post(`http://localhost:3005/empleados/api/delete`, user);
+  deleteUser(email:string,password:string){
+    return this.http.delete(`http://localhost:3005/empleados/api/delete/${email}/${password}`);
   }
   getUsers(){
     return this.http.get(`http://localhost:3005/empleados/api/read`);

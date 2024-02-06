@@ -83,7 +83,7 @@ class UsuarioDao {
      * @returns {Promise<Usuario | null>}
      */
     public static EliminarUsuario = async (email: string): Promise<Usuario | null> => {
-    
+        console.log("email en el dao: ",email)
         let rows: RowDataPacket[] | RowDataPacket[][] | OkPacket | OkPacket[] | ResultSetHeader;
     
         const queryEliminarUsuario: string = `DELETE FROM usuario WHERE email=?`;

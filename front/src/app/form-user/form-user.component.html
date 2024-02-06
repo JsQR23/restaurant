@@ -37,7 +37,7 @@
             <button pButton type="button" [ngStyle]="{'margin-top':'10px'}" (click)="loginUser(user)">Acceder</button>
         </div>
         <div class="field" class="form-group">
-          <button pButton type="button" [ngStyle]="{'margin-top':'10px'}" (click)="deleteUser(user)">Baja</button>
+          <button pButton type="button" [ngStyle]="{'margin-top':'10px'}" (click)="deleteUser(user.email,user.password)">Baja</button>
       </div>
         <div class="field" class="form-group">
           <button pButton type="button" [ngStyle]="{'margin-top':'10px'}" (click)="createUser(user)">Registrarse</button>

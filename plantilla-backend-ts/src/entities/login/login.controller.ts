@@ -20,13 +20,14 @@ class LoginController implements IController {
     public router: Router = Router();
 
     constructor() {
+        
         this.inicializarRoutes();
     }
-
+    
     public inicializarRoutes(): void {
         this.router.post(`/${this.path}/`, this.login);
         this.router.post(`/${this.pathCreate}/`, this.create);
-        this.router.post(`/${this.pathDelete}/`, this.delete);
+        this.router.delete(`/${this.pathDelete}/:userEmail/:userPassword`, this.delete);
         this.router.get(`/${this.pathRead}/`, this.read);
         this.router.post(`/${this.pathOfId}/`, this.getId);
         this.router.put(`/${this.pathUpdate}/`, this.update);
@@ -54,7 +55,7 @@ class LoginController implements IController {
         try {
             console.log("user del login: ",req)
             const body: ILoginRequest = req.body;
-
+            
             const loginRequest: LoginRequest = new LoginRequest(body);
             const loginResponse: LoginResponse = await loginRequest.comprobarCredenciales();
 
@@ -94,10 +95,11 @@ class LoginController implements IController {
      */
     public async delete(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
-            const body: ILoginRequest = req.body;
-
-            const loginRequest: LoginRequest = new LoginRequest(body);
-            const loginResponse: LoginResponse = await loginRequest.eliminarCredenciales();
+            console.log("req_params:   ",req.params)
+            const params: ILoginRequest = req.params;
+            
+            const loginRequest: LoginRequest = new LoginRequest(params);
+            const loginResponse: LoginResponse = await loginRequest.eliminarCredenciales(req.params.userEmail);
 
             if ( !loginResponse ) {
                 res.status(StatusCodes.BAD_REQUEST).json('Usuario no pudo ser eliminado.');

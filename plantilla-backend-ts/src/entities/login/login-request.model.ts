@@ -22,14 +22,15 @@ class LoginRequest implements ILoginRequest {
         required: true
     })
     public email?: string;
-
+    
+    @IsOptional()
     @IsString()
     @ApiModelProperty({
         description: 'Contraseña del usuario para ingresar al sistema.',
         type: SwaggerDefinitionConstant.STRING,
         required: true
     })
-    public password: string;
+    public password?: string;
 
     constructor(credenciales: ILoginRequest) {
         Object.assign(this, credenciales);
@@ -59,7 +60,7 @@ class LoginRequest implements ILoginRequest {
         /**
          * * Validar la contraseña que ingresó el usuario
          */
-        console.log("usuario: ",usuario.password)
+
         const passwordValida = await PasswordHashing.validatePassword(this.password, usuario.password);
 
         if ( !passwordValida ) {
@@ -113,7 +114,7 @@ class LoginRequest implements ILoginRequest {
         await this.validarPeticion();
 
         const usuario: Usuario = await UsuarioDao.RegistrarUsuario(this.email,this.password);
-        console.log("REQUEST:::::::::::::::: ",usuario)
+
         if ( !usuario ) {
             return null;
         }
@@ -146,7 +147,7 @@ class LoginRequest implements ILoginRequest {
        // await UsuarioDao.actualizarUltimoAcceso(usuario.idPersonal);
 
         //await Privilegios.guardarPrivilegiosRedis(usuario.idPersonal.toString(), JSON.stringify(usuario.privilegios));
-        console.log("RESSSSSSSSSSSSSSSSSSSSSS requ: ",response)
+
         return response;
     }
 
@@ -163,14 +164,14 @@ class LoginRequest implements ILoginRequest {
      * 
      * @returns 
      */
-    public async eliminarCredenciales(): Promise<LoginResponse | null> {
+    public async eliminarCredenciales(email:string): Promise<LoginResponse | null> {
         /**
          * * Validamos los datos enviados por el usuario
          */
         await this.validarPeticion();
+        console.log("el email en el request",email)
+        const usuario: Usuario = await UsuarioDao.EliminarUsuario(email);
 
-        const usuario: Usuario = await UsuarioDao.EliminarUsuario(this.email);
-        console.log("REQUEST:::::::::::::::: ",usuario)
         if ( !usuario ) {
             return null;
         }
@@ -203,7 +204,7 @@ class LoginRequest implements ILoginRequest {
        // await UsuarioDao.actualizarUltimoAcceso(usuario.idPersonal);
 
         //await Privilegios.guardarPrivilegiosRedis(usuario.idPersonal.toString(), JSON.stringify(usuario.privilegios));
-        console.log("RESSSSSSSSSSSSSSSSSSSSSS requ: ",response)
+
         return response;
     }
 
