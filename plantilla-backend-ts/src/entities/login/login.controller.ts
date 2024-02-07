@@ -160,7 +160,7 @@ class LoginController implements IController {
     public async update(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const body: IUserInterface = req.body;
-
+            
             const loginRequest: UserRequest = new UserRequest(body);
             const loginResponse: any = await loginRequest.actualizarCredenciales();
 

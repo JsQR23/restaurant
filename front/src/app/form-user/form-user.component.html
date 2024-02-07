@@ -42,22 +42,24 @@
         <div class="field" class="form-group">
           <button pButton type="button" [ngStyle]="{'margin-top':'10px'}" (click)="createUser(user)">Registrarse</button>
       </div>
+<!--el punto es que primero ingresen los datos actuales para saber a quién se actualiza-->
       <div class="field" class="form-group">
         <button pButton type="button" [ngStyle]="{'margin-top':'10px'}" (click)="getId(user)">Actualizar</button>
       </div>
       </p-card>
-      <p-dialog header="Login" [(visible)]="showModal" [modal]="true" [style]="{width: '300px'}">
+<!--se despliega un menú para poder ingresar los datos actualizados-->
+      <p-dialog header="Actualice su información" [(visible)]="showModal" [modal]="true" [style]="{width: '300px'}">
         <form>
           <div>
-            <label for="username">Username:</label>
+            <label for="username">Nombre:</label>
             <input type="text" id="username" name="username" [(ngModel)]="username" pInputText>
           </div>
           <div>
-            <label for="password">Password:</label>
+            <label for="password">Contraseña:</label>
             <input type="password" id="password" name="password" [(ngModel)]="password" pInputText>
           </div>
-          <button type="button" pButton label="Login" (click)="updateUser(id)"></button>
-          <button type="button" pButton label="Cancel" (click)="showModal = false"></button>
+          <button type="button" pButton label="Aceptar" [ngStyle]="{ 'margin-right': '10px','margin-top': '10px'}"(click)="updateUser(id)"></button>
+          <button type="button" pButton label="Cancelar" [ngStyle]="{'margin-top': '10px'}" (click)="showModal = false"></button>
         </form>
       </p-dialog>
 </div>

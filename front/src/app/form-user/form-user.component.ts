@@ -15,7 +15,8 @@ export class FormUserComponent {
     email:'',
     password:''
   }
-  
+  /*la variable permiso es para un función que aún no acabo,
+  lo mismo aplica para el @output y addnewitem*/
   id:number
   permiso:boolean
   constructor(private userService: UserService) { 
@@ -95,7 +96,11 @@ export class FormUserComponent {
        }
     });
    }
-
+    /**
+     * @description Usa el servicio de udateUser para actualizar las credenciales del usuario
+     * @param {number} idUsuario - recibe el id del usuario para poder hacer la actualización correctamente
+     * @returns {Promise<Object>}
+     */
   updateUser(idUsuario:number){
     console.log("idusuario: ",idUsuario)
     this.userService.updateUser(idUsuario).subscribe({

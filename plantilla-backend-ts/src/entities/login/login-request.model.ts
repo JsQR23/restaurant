@@ -99,7 +99,7 @@ class LoginRequest implements ILoginRequest {
 
 
     /**
-     * @description Comprueba las credenciales ingresadas por el usuario, si son validas se retorna el objeto 'LoginResponse' con los datos del usuario
+     * @description Crea un usuario a través del Dao y retorna una instancia de la clase LoginResponse con los datos de éste
      * @author: 
      * @returns {Promise<LoginResponse|null>}
      */
@@ -156,7 +156,7 @@ class LoginRequest implements ILoginRequest {
 
 
     /**
-     * @description Comprueba las credenciales ingresadas por el usuario, si son validas se retorna el objeto 'LoginResponse' con los datos del usuario
+     * @description Elimina un usuario a través de su email, regresa un token y los datos del usuario
      * @author: 
      * @returns {Promise<LoginResponse|null>}
      */
@@ -212,9 +212,9 @@ class LoginRequest implements ILoginRequest {
 
 
     /**
-     * @description Comprueba las credenciales ingresadas por el usuario, si son validas se retorna el objeto 'LoginResponse' con los datos del usuario
+     * @description Obtiene toda la información de los usuarios y retorna un objeto con sus emails y sus contraseñas
      * @author: 
-     * @returns {Promise<LoginResponse|null>}
+     * @returns {Promise<LoginResponse|Object>}
      */
     /**
      * 
@@ -251,14 +251,13 @@ class LoginRequest implements ILoginRequest {
        // await UsuarioDao.actualizarUltimoAcceso(usuario.idPersonal);
 
         //await Privilegios.guardarPrivilegiosRedis(usuario.idPersonal.toString(), JSON.stringify(usuario.privilegios));
-        console.log("RESSSSSSSSSSSSSSSSSSSSSS requ: ",response)
         return response;
     }
 
 
 
     /**
-     * @description Comprueba las credenciales ingresadas por el usuario, si son validas se retorna el objeto 'LoginResponse' con los datos del usuario
+     * @description Obtiene los datos del usuario y también su id. Retorna un objeto
      * @author: 
      * @returns {Promise<LoginResponse|null>}
      */
@@ -313,7 +312,7 @@ class LoginRequest implements ILoginRequest {
         return response;
     }
 
-
+//actualizar credenciales está en users-request.model
 
     /**
      * @description Valida que los datos de la petición tenga el formato correcto
