@@ -1,0 +1,68 @@
+<style>
+.hidden {
+    display: none;
+  }
+</style>
+<p-sidebar [(visible)]="sidebarVisible">
+    <h3>Menú principal</h3>
+    <p-accordion>
+
+    <p-accordionTab header="Registro / Acceso">
+            <a routerLink="/" style="color: black; text-decoration: none;" (click)="click()">
+                Registrarse / Acceder                               
+            </a>
+        </p-accordionTab>
+
+        <p-accordionTab header="Nuestros productos">
+            <a routerLink="/lsproducts" style="color: black; text-decoration: none;"(click)="click()">
+                El menú                      
+            </a>
+        </p-accordionTab>
+
+        <p-accordionTab header="Nuestros clientes">
+            <a routerLink="/lsclients" style="color: black; text-decoration: none;" (click)="click()">
+                Nuestros clientes
+            </a>
+        </p-accordionTab>
+        
+        <p-accordionTab header="Actualizar mi información" [hidden]="permiso" >
+            <a [routerLink]="isLinkDisabled ? null : '/update'" style="color: black; text-decoration: none;" (click)="clickActualizar()">
+                Actualizar mi información
+            </a>
+        </p-accordionTab>
+
+        <p-accordionTab header="Darse de baja" [hidden]="permiso"  >
+            <a [routerLink]="isLinkDisabled ? null : '/delete'" style="color: black; text-decoration: none;" (click)="clickBorrar()">
+                Darme de baja
+            </a>
+        </p-accordionTab>
+
+        <p-accordionTab header="Sugerencias de platillos" [hidden]="permiso" >
+            <a [routerLink]="isLinkDisabled ? null : '/formsuggest'" style="color: black; text-decoration: none;" (click)="click()">
+                Sugiera platillos
+            </a>
+        </p-accordionTab>
+    </p-accordion>
+</p-sidebar>
+
+<p-dialog header="Baja" [(visible)]="showModal" [modal]="true">
+    <label>¿Seguro que quiere darse de baja?</label>
+    <div>
+      <button type="button" 
+        pButton label="Aceptar" 
+        class="boton-registrar-aceptar"
+        (click)="deleteUser()"
+        class="button-aceptar"
+        severity="danger"
+        style="margin-right: 1rem;">
+      </button>
+
+      <button type="button" 
+        pButton label="Cancelar" 
+        (click)="showModal = false">
+      </button>
+    </div>
+</p-dialog>
+
+
+<p-button (click)="sidebarVisible = true" icon="pi pi-arrow-right"></p-button>

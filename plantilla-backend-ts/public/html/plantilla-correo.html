@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        .fondo {
+            background: linear-gradient(#F5F5F5, #171717);
+        }
+
+        .logo {
+            height: auto;
+            width: 320px;
+        }
+
+        .cardFormulario {
+            background: white;
+            margin: auto;
+            margin-top: 20px;
+            height: auto;
+            width: 70%;
+            border-radius: 6px;
+            box-shadow: #353434 0px 1px 4px 0px;
+        }
+
+        .header {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0px;
+        }
+
+        .boton {
+            text-align: center;
+            background: #FF0003;
+            padding-top: 12px;
+            padding-bottom: 10px;
+            border-radius: 4px;
+            font-family: GothamPro, sans-serif;
+            font-size: 14px;
+            color: white !important;
+            letter-spacing: 0.5px;
+            border: none;
+            text-decoration: blink;
+            padding-left: 32%;
+            padding-right: 32%;
+            box-shadow: #353434 0px 1px 4px 0px;
+            text-decoration: none;
+        }
+
+        .parrafo {
+            padding-top: 12px;
+            padding-left: 15%;
+            padding-right: 15%;
+            text-align: center;
+            font-family: Roboto, sans-serif;
+            color: #3F3E40;
+            font-size: 12px;
+        }
+
+        .margenBoton {
+            text-align: center;
+            width: 100%;
+            margin-bottom: 6px;
+            margin-top: 25px;
+        }
+
+        @media screen and (max-width: 800px) {
+            .boton {
+                padding-left: 28%;
+                padding-right: 28%;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .boton {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .logo {
+                height: auto;
+                width: 225px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fondo">
+        <br>
+        <div class="cardFormulario">
+            <div style="text-align: center;">
+                <br>
+                <br>
+                <a href="${APPURL}">
+                    <img src="cid:logo" alt="SIMONE" class="logo">
+                </a>
+                <br>
+            </div>
+            <p class="parrafo">
+                ${MENSAJE}
+                <br>
+                <br>
+                <span style="font-style: italic; text-align: center; display: block;">Este correo es generado automáticamente</span>
+                <br>
+                <br>
+            </p>
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
+</body>
+
+</html>

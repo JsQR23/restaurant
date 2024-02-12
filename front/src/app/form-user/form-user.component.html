@@ -1,0 +1,62 @@
+<div class="grid p-4> div-principal">
+  <p-card class="col-12 sm:col-12 md:col-10 lg:col-8 xl:col-6" header="Acceda">
+
+    <div class="field grid mb-3">
+      <div class="col">
+        <span class="p-float-label" id="span1">
+          <input class="w-full" type="text" id="email" pInputText [(ngModel)]="user.email"> 
+          <label for="email">E-mail</label>
+        </span>
+      </div>
+    </div>
+
+    <div class="field grid mb-3">
+      <div class="col">
+        <span class="p-float-label" id="span2">
+          <input class="w-full" type="password" id="motPasse" pInputText [(ngModel)]="user.password"> 
+          <label for="motPasse">Contraseña</label>
+        </span>
+      </div>
+    </div>
+
+    <div class="field grid">
+        <div class="col">
+          <button pButton type="button" for="card-main" class="w-full botones" (click)="loginUser(user)">Acceder</button>
+        </div>
+    </div>
+
+      <div class="field" class="form-group">
+        <a for="card-main" (click)="show()">Registrarse</a>
+      </div>
+  </p-card>
+</div>
+
+<!--menú para crear usuario-->
+<p-dialog header="Regístrese" [(visible)]="showModal" [modal]="true" [style]="{width: '300px'}">
+  <form>
+    <div>
+      <label for="username">Email:</label>
+        <input type="text" id="username" name="username" [(ngModel)]="user.email" pInputText>
+    </div>
+
+    <div>
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" [(ngModel)]="user.password" pInputText>
+    </div>
+
+    <button type="button" 
+      pButton label="Aceptar" 
+      class="boton-registrar-aceptar" 
+      (click)="clickCreate()">
+    </button>
+
+    <button type="button" 
+      pButton label="Cancelar" 
+      class="boton-registrar" 
+      (click)="showModal = false">
+    </button>
+  </form>
+</p-dialog>
+
+
+

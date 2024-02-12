@@ -1,0 +1,10 @@
+.fondo {
+  width: 100wh;
+  height: 100vh;
+  background-image: url(brick.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-origin: border-box;
+}/*# sourceMappingURL=app.component.css.map */

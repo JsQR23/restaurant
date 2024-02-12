@@ -1,0 +1,28 @@
+<div>
+    <p-card class="col-12 sm:col-12 md:col-10 lg:col-8 xl:col-6" header="Actualice su información" id="card-main">
+      
+      <div class="field grid mb-3">
+        <div class="col">
+          <span class="p-float-label" id="span1">
+            <input class="w-full" type="text" id="email" pInputText [(ngModel)]="session.email"> 
+            <label for="email">E-mail</label>
+          </span>
+        </div>
+      </div>
+  
+      <div class="field grid mb-3">
+        <div class="col">
+          <span class="p-float-label" id="span2">
+            <input class="w-full" type="password" id="motPasse" pInputText [(ngModel)]="session.password"> 
+            <label for="motPasse">Contraseña</label>
+          </span>
+        </div>
+      </div>
+  
+      <div class="field grid">
+        <div class="col">
+          <button pButton type="button" for="card-main" class="w-full botones" (click)="updateUser()">Aceptar</button>
+        </div>
+    </div>
+    </p-card>
+</div>

@@ -1,0 +1,19 @@
+p-dialog {
+  width: 25rem;
+}
+
+label {
+  font-size: 1.5rem;
+  text-align: justify;
+  margin-top: 1rem;
+}
+
+div {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button-acetar {
+  margin-right: 1rem;
+}/*# sourceMappingURL=sidebar.component.css.map */

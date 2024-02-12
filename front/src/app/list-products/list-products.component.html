@@ -1,0 +1,24 @@
+<div class="grid p-4> div-principal">
+  <label>Funcionalidad bajo construcción</label>
+  <p-card header="Nuestro menú" class="col-12 sm:col-12 md:col-10 lg:col-8 xl:col-6 p-2">
+    
+    <p-table [value]="plats">
+      <ng-template pTemplate="header">
+        <tr>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Imagen</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-plat>
+            <tr>
+              <td>{{ plat.nom }}</td>
+              <td>{{ plat.prix }}</td>
+              <td>
+                <img [src]="plat.image" alt="{{ plat.nom }}">
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+  </p-card>
+</div>
