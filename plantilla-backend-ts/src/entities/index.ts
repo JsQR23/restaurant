@@ -1,7 +1,7 @@
 import { Router } from "express";
 import LoginController from "./login/login.controller";
 import UserController from "./usuario/usuario.controller";
-
+import PlatilloController from "./platillos/platillos-controller";
 
 
 class BaseRouter {
@@ -12,6 +12,7 @@ class BaseRouter {
         this.router.use(new LoginController().router);
         //this.router.use(new RegistroController().router);
         this.router.use(new UserController().router);
+        this.router.use(new PlatilloController().router)
     }
 }
 

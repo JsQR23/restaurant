@@ -3,13 +3,23 @@ import { IsEmail, IsNumber, IsObject, IsOptional, IsString } from "class-validat
 import { ApiModelProperty, SwaggerDefinitionConstant } from "swagger-express-ts"
 
 export interface IPlatilloResponse {
+    token?
     nombre?:string;
     precio?:Number;
     img?:string
 }
 
-
 class PlatilloResponse implements IPlatilloResponse {
+    
+    @IsString()
+    @IsOptional()
+    @ApiModelProperty({
+        description: 'token.',
+        type: SwaggerDefinitionConstant.STRING,
+        required: false
+    })
+    public token?: string;
+
     @IsString()
     @IsOptional()
     @ApiModelProperty({
@@ -35,14 +45,11 @@ class PlatilloResponse implements IPlatilloResponse {
         type: SwaggerDefinitionConstant.STRING,
         required: false
     })
-    public imagen?: string;
+    public img?: string;
 
     constructor(platilloResponse: IPlatilloResponse) {
         Object.assign(this, platilloResponse)
-    }
-
-
-    
+    }  
 }
 
 export default PlatilloResponse;

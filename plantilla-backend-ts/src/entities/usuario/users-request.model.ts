@@ -208,7 +208,7 @@ class UserRequest implements IUserRequest {
     public async obtenerCredenciales(): Promise<any | null> {
 
         const usuario: any = await UsuarioDao.ObtenerUsuarios();
-        console.log("REQUEST:::::::::::::::: ",usuario)
+
         if ( !usuario ) {
             return null;
         }
@@ -230,12 +230,6 @@ class UserRequest implements IUserRequest {
         
         response.push({token:token})
         
-        /**
-         * * Actualizar la fecha de ultimo acceso al sistema
-         */
-       // await UsuarioDao.actualizarUltimoAcceso(usuario.idPersonal);
-
-        //await Privilegios.guardarPrivilegiosRedis(usuario.idPersonal.toString(), JSON.stringify(usuario.privilegios));
         return response;
     }
 
@@ -243,10 +237,6 @@ class UserRequest implements IUserRequest {
      * @description Obtiene los datos del usuario y también su id. Retorna un objeto
      * @author: 
      * @returns {Promise<UserResponse|null>}
-     */
-    /**
-     * 
-     * @returns 
      */
     public async obtenerId(): Promise<UserResponse | null> {
         /**

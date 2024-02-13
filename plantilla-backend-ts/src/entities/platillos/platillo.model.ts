@@ -4,18 +4,25 @@ import { IsNumber, IsString, IsEmail, IsBoolean, validate, IsOptional } from "cl
 import { ApiModel, ApiModelProperty, SwaggerDefinitionConstant } from "swagger-express-ts";
 
 export interface IPlatillo {
+    token?
     nombre?:string;
-    precio?:Number;
+    precio?:number;
     img?:string;
 }
-
-//export interface IUsuarioSesion extends Pick<IUsuario, 'email'>{}
-
 
 @ApiModel({
     name: 'Platillo'
 })
 export class Platillo implements IPlatillo{
+    @IsString()
+    @IsOptional()
+    @ApiModelProperty({
+        description: 'token.',
+        type: SwaggerDefinitionConstant.STRING,
+        required: true
+    })
+    public token?: string;
+
     @IsString()
     @IsOptional()
     @ApiModelProperty({
@@ -32,7 +39,7 @@ export class Platillo implements IPlatillo{
         type: SwaggerDefinitionConstant.NUMBER,
         required: true
     })
-    public precio?: Number;
+    public precio?: number;
 
     @IsString()
     @IsOptional()

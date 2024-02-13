@@ -22,13 +22,12 @@ class UsuarioDao {
      */
     public static comprobarRegistroUsuario = async (email: string): Promise<User | null> => {
         let rows: RowDataPacket[] | RowDataPacket[][] | OkPacket | OkPacket[] | ResultSetHeader;
-        console.log("email dao: ",email)
+
         const queryComprobarRegistroUsuario: string = `SELECT id, email, password FROM user WHERE email=?`;
 
         try {
             [rows] = await pool.query(queryComprobarRegistroUsuario,[email]);
-            console.log("?comprobar registro¿: ",rows)
-            console.log("rows: ",rows)
+
         } catch (error) {
             
             throw new MysqlException('comprobarRegistroUsuario', error.message);
@@ -55,13 +54,13 @@ class UsuarioDao {
     public static RegistrarUsuario = async (email: string, password: string): Promise<User | null> => {
         let hashed = await PasswordHashing.hashPasword(password);
     
-        let rows: RowDataPacket[] 
+        let rows: OkPacket 
     
         const queryRealizarRegistroUsuario: string = `INSERT INTO user (email, password) VALUES (?, ?)`;
     
         try {
             const [rows] = await pool.query(queryRealizarRegistroUsuario, [email, hashed]);
-            console.log("Rows after query: ", rows);
+            console.log("Rows after query create: ", rows);
         } catch (error) {
             console.error(`Error during query: ${error.message}`);
             throw new MysqlException('realizarRegistroUsuario', error.message);
@@ -121,10 +120,10 @@ class UsuarioDao {
     
         try {
             [rows] = await pool.query(queryObtenerUsuarios);
-            console.log("rows de obtener usuarios:  ",rows)
+
         } catch (error) {
             console.error(`Error during query: ${error.message}`);
-            throw new MysqlException('eliminarUsuario', error.message);
+            throw new MysqlException('obtenerUsuarios', error.message);
         }
     
         if (Object.keys(rows).length === 0) return null;
@@ -132,7 +131,7 @@ class UsuarioDao {
         if (!Array.isArray(rows)) {
             throw new Error('Query did not return an array');
         }
-        console.log("Rows query: ", rows);
+
         return rows;
     }
 

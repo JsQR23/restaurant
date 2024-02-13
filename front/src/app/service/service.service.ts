@@ -33,7 +33,11 @@ export class UserService {
   updateUser(datos:Session){
     return this.http.put(`http://localhost:3005/empleados/api/update`, datos);
   }
+  
   createDish(platillo:Dish){
-    return this.http.post(`http://localhost:3005/empleados/api/platillo`, platillo);
+    return this.http.post(`http://localhost:3005/empleados/api/platillos`, platillo);
+  }
+  getDish(){
+    return this.http.get(`http://localhost:3005/empleados/api/platillos/get`);
   }
 }

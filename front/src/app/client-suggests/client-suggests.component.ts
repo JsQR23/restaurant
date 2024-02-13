@@ -14,9 +14,9 @@ export class ClientSuggestsComponent {
   }
   constructor(private userService: UserService) {}
 
-  platoNumber:Number=0
+  platoNumber:number=0
   createDish(plato:Dish){
-    this.platoNumber=Number(plato.precio)
+    this.platoNumber=+plato.precio
     console.log(`tipo de la variable precio: ${typeof(this.platoNumber)}`)
     this.userService.createDish(plato).subscribe({
       next: (response) => {

@@ -26,19 +26,19 @@
         </p-accordionTab>
         
         <p-accordionTab header="Actualizar mi información" [hidden]="permiso" >
-            <a [routerLink]="/update" style="color: black; text-decoration: none;" (click)="clickActualizar()">
+            <a routerLink="/update" style="color: black; text-decoration: none;" (click)="clickActualizar()">
                 Actualizar mi información
             </a>
         </p-accordionTab>
 
         <p-accordionTab header="Darse de baja" [hidden]="permiso"  >
-            <a [routerLink]="/delete" style="color: black; text-decoration: none;" (click)="clickBorrar()">
+            <a routerLink="/delete" style="color: black; text-decoration: none;" (click)="clickBorrar()">
                 Darme de baja
             </a>
         </p-accordionTab>
 
         <p-accordionTab header="Sugerencias de platillos" [hidden]="permiso" >
-            <a [routerLink]="/formsuggest" style="color: black; text-decoration: none;" (click)="click()">
+            <a routerLink="/formsuggest" style="color: black; text-decoration: none;" (click)="click()">
                 Sugiera platillos
             </a>
         </p-accordionTab>

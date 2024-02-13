@@ -8,7 +8,7 @@ export interface Session{
     password:string
 }
 export interface Dish{
-    nombre:string;
+    nombre?:string;
     precio:string;
-    img:string;
+    img?:string;
 }

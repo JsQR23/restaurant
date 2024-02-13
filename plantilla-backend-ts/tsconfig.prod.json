@@ -8,4 +8,4 @@
       "src/**/*.mock.ts",
       "src/public/"
     ]
-  }  
+}  

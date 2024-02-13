@@ -1,10 +1,12 @@
 <div class="grid p-4> div-principal">
   <p-card class="col-12 sm:col-12 md:col-10 lg:col-8 xl:col-6">
+
   <label>Funcionalidad bajo construcción</label>
+
     <div class="field grid mb-3">
       <div class="col">
         <span class="p-float-label" id="span1">
-          <input class="w-full" type="text" id="nombre" pInputText> 
+          <input class="w-full" type="text" id="nombre" pInputText [(ngModel)]="dish.nombre" > 
           <label for="nombre">Nombre</label>
         </span>
       </div>
@@ -13,7 +15,7 @@
     <div class="field grid mb-3">
       <div class="col">
         <span class="p-float-label" id="span2">
-          <input class="w-full" type="password" id="precio" pInputText> 
+          <input class="w-full" type="text" id="precio aproximado" pInputText [(ngModel)]="dish.precio"> 
           <label for="precio">Precio</label>
         </span>
       </div>
@@ -22,7 +24,7 @@
     <div class="field grid mb-3">
       <div class="col">
         <span class="p-float-label" id="span2">
-          <input class="w-full" type="password" id="img" pInputText> 
+          <input class="w-full" type="text" id="img" pInputText [(ngModel)]="dish.img"> 
           <label for="img">imagen (link)</label>
         </span>
       </div>

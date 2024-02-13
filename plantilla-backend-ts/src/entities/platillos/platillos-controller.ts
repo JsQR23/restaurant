@@ -1,16 +1,19 @@
-import LoginRequest, { ILoginRequest } from "./login-request.model";
+import PlatilloRequest from "./platillos-request.model";
+import { IPlatilloRequest } from "./platillos-request.model";
 import { NextFunction, Request, Response, Router } from "express";
 import { StatusCodes } from "http-status-codes";
 import IController from "@common/interfaces/controller.interface";
 import { ApiOperationPost, ApiPath } from "swagger-express-ts";
 import PlatilloResponse from "./platillos-response.model";
+import PlatilloDao from "./platillo.dao";
 
 @ApiPath({
-    name: 'Login',
-    path: '/login'
+    name: 'Platillos',
+    path: '/platillos'
 })
 class PlatilloController implements IController {
     public path: string = "platillos";
+    public pathGet: string = "platillos/get";
     public router: Router = Router();
 
     constructor() {
@@ -20,6 +23,7 @@ class PlatilloController implements IController {
     
     public inicializarRoutes(): void {
         this.router.post(`/${this.path}/`, this.create);
+        this.router.get(`/${this.pathGet}/`, this.read);
     }
     @ApiOperationPost({
         path: '/',
@@ -44,17 +48,38 @@ class PlatilloController implements IController {
 
             const body: IPlatilloRequest = req.body;
             
-            const loginRequest: PlatilloRequest = new LoginRequest(body);
-            const loginResponse: PlatilloResponse = await loginRequest.comprobarCredenciales();
+            const platilloRequest: PlatilloRequest = new PlatilloRequest(body);
+            const platilloResponse: PlatilloResponse = await platilloRequest.registrarPlatillo();
 
-            if ( !loginResponse ) {
+            if ( !platilloResponse ) {
                 res.status(StatusCodes.BAD_REQUEST).json('No se pudo agregar el platillo.');
                 return;
             }
 
-            res.status(StatusCodes.OK).json(loginResponse);
+            res.status(StatusCodes.OK).json(platilloResponse);
         } catch (error) {
             next(error);
         }
     }
-}
+    /**
+     * @description Manda los datos desde una requets hasta el dao para ver todos los usuarios
+     */
+    public async read(req: Request, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const body: IPlatilloRequest = req.body;
+
+            const platilloRequest: PlatilloRequest = new PlatilloRequest(body);
+
+            const platilloResponse: PlatilloResponse = await platilloRequest.obtenerPlatillos();
+            console.log("platillo response: ",platilloResponse)
+            if ( !platilloResponse ) {
+                res.status(StatusCodes.BAD_REQUEST).json('No se pudieron obtener los platillos.');
+                return;
+            }
+
+            res.status(StatusCodes.OK).json(platilloResponse);
+        } catch (error) {
+            next(error);
+        }
+    }
+} export default PlatilloController

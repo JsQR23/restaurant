@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UserService } from '../service/service.service';
+import { Dish } from '../models/models';
 //import { Plat } from '../models/models';
 @Component({
   selector: 'app-list-products',
@@ -6,16 +8,29 @@ import { Component } from '@angular/core';
   styleUrls: ['./list-products.component.scss']
 })
 export class ListProductsComponent {
-  //por el momento, se trabajan con valores fijos
-  plats:any[]=[
-    {nom:'Foie Gras Poêlé',
-    prix:'130',
-    image:'https://www.foie-gras-sarlat.com/content/upload/images/recette-foie-gras-poele.jpg'},
-    {nom:'Filet de Bœuf Rossini',
-    prix:'180',
-    image:'https://resize.elle.fr/portrait/var/plain_site/storage/images/elle-a-table/recettes-de-cuisine/tournedos-rossini-sauce-perigueux-2066736/21651872-1-fre-FR/Tournedos-Rossini-sauce-Perigueux.png'},
-    {nom:'Soufflé au Fromage',
-    prix:'100',
-    image:'https://resize.prod.femina.ladmedia.fr/rblr/652,438/img/var/2020-05/hd-7souffle-fromage.jpg'},
-  ]
+//aquí se obtienen todos los emails de los usuarios  
+display:boolean=false;
+  
+constructor(private userService: UserService) { }
+
+dish:any={
+  nombre:'',
+  precio:'',
+  img:''
+}
+
+ngOnInit(): void {
+  this.getProduct();
+}
+
+getProduct() {
+  this.userService.getDish().subscribe({
+     next: (response) => {
+      this.dish = Object.entries(response);
+     },
+     error: (err) => {
+       console.error(err);
+    }
+  });
+}
 }
