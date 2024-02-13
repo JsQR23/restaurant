@@ -17,15 +17,18 @@ export class SidebarComponent {
     private userService:UserService,
     private router: Router) { }
 
-  permiso:boolean=true
-  isLinkDisabled:boolean=true
-  id:number=0
+    /**
+     * @description: Se necesitan de dos servicios: uno para saber si se pueden mostrar todos los elementos de la sidebar
+     * y otro para obtener el id de quien se acaba de loggear
+     * @author: Fabián Quintanar 12/02/24
+     */
   ngOnInit() {
+//el nombre no fue el más correcto, pero este servicio obitene el permiso para mostrar
+//los elementos ocultos de la sidebar
     this.idService.getData().subscribe((data) => {
       //permiso corresponde al accordiontab
       this.permiso = data;
       //islinkdisabled corresponde al anchor, si se puede dar click en él o no
-      this.isLinkDisabled=data;
       console.log("situacion permiso: ",data)
     });
     this.updateService.getId().subscribe((data) => {
@@ -33,6 +36,12 @@ export class SidebarComponent {
     });
   }
 
+
+    /**
+     * @description: Hay botones que tienen que realizar dos acciones a la vez
+     * @param {number} idUser
+     * @author: Fabián Quintanar 12/02/24
+     */
   click() {
     this.sidebarVisible=false
   }
@@ -45,9 +54,12 @@ export class SidebarComponent {
     this.sidebarVisible=false
     this.showModal=true
   }
-
+    /**
+     * @description: Llama al servicio de borrar usuarios
+     * @param {number} idUser
+     * @author: Fabián Quintanar 12/02/24
+     */
   deleteUser() {
-    console.log("this.id en deleteUser: ",this.id)
     this.userService.deleteUser(this.id).subscribe({
 
        next: (response) => {
@@ -60,10 +72,18 @@ export class SidebarComponent {
        }
     });
    }
-  showModal:boolean = false
-  sidebarVisible:boolean=false;
-
+    /**
+     * @description: Permite renderizar el componente update-client y pasar el id de quien se actualiza
+     * @param {number} idUser
+     * @author: Fabián Quintanar 12/02/24
+     */
   irActualizar(id: number) {
     this.router.navigate(['/update', id]);
   }
+/*variables de apoyo*/
+  showModal:boolean = false //muestra el primeng modal que contiene las opciones para borrar la cuenta del usuario
+  id:number=0 //el id se usa para saber qué usuario borrar
+  sidebarVisible:boolean=false; //abra o cierra la barra vertical
+  permiso:boolean=true //da permiso de mostrar ciertas tabs de la barra vertical
+
 }

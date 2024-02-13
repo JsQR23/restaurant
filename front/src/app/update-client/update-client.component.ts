@@ -25,13 +25,13 @@ export class UpdateClientComponent {
     
   }
   id!: number
-
+//obtenemos el id a través del url:
   ngOnInit(): void {
     const idParam = this.route.snapshot.paramMap.get('id');
     if (idParam !== null) {
       this.id = +idParam;
     } else {
-      console.error('Fue nulo.');
+      console.error('el resultado del url fue nulo.');
     }
 
     this.session.id=this.id

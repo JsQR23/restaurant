@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./list-products.component.scss']
 })
 export class ListProductsComponent {
+  //por el momento, se trabajan con valores fijos
   plats:any[]=[
     {nom:'Foie Gras Poêlé',
     prix:'130',

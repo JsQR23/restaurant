@@ -9,6 +9,7 @@ import { UserService } from '../service/service.service';
 })
 
 export class ListClientComponent {
+//aquí se obtienen todos los emails de los usuarios  
   display:boolean=false;
   
   constructor(private userService: UserService) { }
