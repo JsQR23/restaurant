@@ -243,7 +243,7 @@ class UserRequest implements IUserRequest {
          * * Validamos los datos enviados por el usuario
          */
         await this.validarPeticion();
-        const usuario: any = await UsuarioDao.comprobarRegistroUsuario(this.email);
+        const usuario: Usuario = await UsuarioDao.comprobarRegistroUsuario(this.email);
         
         if ( !usuario ) {
             return null;

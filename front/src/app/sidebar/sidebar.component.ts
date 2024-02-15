@@ -52,7 +52,7 @@ export class SidebarComponent {
   }
   clickBorrar(){
     this.sidebarVisible=false
-    this.showModal=true
+    this.showModal= !this.showModal
   }
     /**
      * @description: Llama al servicio de borrar usuarios

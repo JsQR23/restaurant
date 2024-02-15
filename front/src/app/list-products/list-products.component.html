@@ -1,25 +1,25 @@
-<div class="grid p-4> div-principal">
-  <label>Funcionalidad bajo construcción</label>
-
-  <p-card header="Nuestro menú" class="col-12 sm:col-12 md:col-10 lg:col-8 xl:col-6 p-2">
-    
+<div class="grid p-4 div-principal">
+  <p-card header="Los clientes sugieren:" class="col-12 sm:col-12 md:col-10 lg:col-8 xl:col-6 p-2">
     <p-table [value]="dish">
+      
       <ng-template pTemplate="header">
         <tr>
-              <th>Nombre</th>
-              <th>Precio</th>
-              <th>Imagen</th>
-            </tr>
-          </ng-template>
-          <ng-template pTemplate="body" let-plat>
-            <tr>
-              <td>{{ dish.nombre }}</td>
-              <td>{{ dish.precio }}</td>
-              <td>
-                <img [src]="dish.img" alt="{{ dish.img }}">
-              </td>
-            </tr>
-          </ng-template>
-        </p-table>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Imagen</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-plat let-i="index">
+        <tr *ngIf="plat[1]">
+          <td>{{ plat[1]?.nombre }}</td>
+          <td>{{ plat[1]?.precio }}</td>
+          <td>
+            <img [src]="plat[1]?.img" alt="{{ plat[1]?.img }}">
+          </td>
+        </tr>
+      </ng-template>
+
+    </p-table> 
   </p-card>
 </div>

@@ -1,51 +1,48 @@
-<style>
-.hidden {
-    display: none;
-  }
-</style>
 <p-sidebar [(visible)]="sidebarVisible">
     <h3>Menú principal</h3>
     <p-accordion>
 
-    <p-accordionTab header="Registro / Acceso">
-            <a routerLink="/" style="color: black; text-decoration: none;" (click)="click()">
+        <p-accordionTab header="Registro / Acceso">
+            <a routerLink="/" class="hover:text-yellow-600" style="color: black; text-decoration: none;" (click)="click()">
                 Registrarse / Acceder                               
             </a>
         </p-accordionTab>
 
-        <p-accordionTab header="Nuestros productos">
-            <a routerLink="/lsproducts" style="color: black; text-decoration: none;"(click)="click()">
-                El menú                      
+        <p-accordionTab header="Los clientes dicen">
+            <a routerLink= "/lsproducts" class="hover:text-yellow-600" style="color: black; text-decoration: none;"(click)="click()">
+                Sugerencias de clientes                      
             </a>
         </p-accordionTab>
 
         <p-accordionTab header="Nuestros clientes">
-            <a routerLink="/lsclients" style="color: black; text-decoration: none;" (click)="click()">
+            <a routerLink="/lsclients" class="hover:text-yellow-600" style="color: black; text-decoration: none;" (click)="click()">
                 Nuestros clientes
             </a>
         </p-accordionTab>
         
         <p-accordionTab header="Actualizar mi información" [hidden]="permiso" >
-            <a routerLink="/update" style="color: black; text-decoration: none;" (click)="clickActualizar()">
+            <a routerLink="/update" class="hover:text-yellow-600" style="color: black; text-decoration: none;" (click)="clickActualizar()">
                 Actualizar mi información
             </a>
         </p-accordionTab>
 
         <p-accordionTab header="Darse de baja" [hidden]="permiso"  >
-            <a routerLink="/delete" style="color: black; text-decoration: none;" (click)="clickBorrar()">
+            <a routerLink="/delete" class="hover:text-yellow-600" style="color: black; text-decoration: none;" (click)="clickBorrar()">
                 Darme de baja
             </a>
         </p-accordionTab>
 
         <p-accordionTab header="Sugerencias de platillos" [hidden]="permiso" >
-            <a routerLink="/formsuggest" style="color: black; text-decoration: none;" (click)="click()">
+            <a routerLink="/formsuggest" class="hover:text-yellow-600" style="color: black; text-decoration: none;" (click)="click()">
                 Sugiera platillos
             </a>
         </p-accordionTab>
     </p-accordion>
+
 </p-sidebar>
 
 <p-dialog header="Baja" [(visible)]="showModal" [modal]="true">
+
     <label>¿Seguro que quiere darse de baja?</label>
     <div>
       <button type="button" 
@@ -63,6 +60,5 @@
       </button>
     </div>
 </p-dialog>
-
 
 <p-button (click)="sidebarVisible = true" icon="pi pi-arrow-right"></p-button>

@@ -9,28 +9,25 @@ import { Dish } from '../models/models';
 })
 export class ListProductsComponent {
 //aquí se obtienen todos los emails de los usuarios  
-display:boolean=false;
-  
-constructor(private userService: UserService) { }
+  display:boolean=false;
+    
+  constructor(private userService: UserService) { }
 
-dish:any={
-  nombre:'',
-  precio:'',
-  img:''
-}
+  dish:any[]=[]
 
-ngOnInit(): void {
-  this.getProduct();
-}
+  ngOnInit(): void {
+    this.getProduct();
+  }
 
-getProduct() {
-  this.userService.getDish().subscribe({
-     next: (response) => {
-      this.dish = Object.entries(response);
-     },
-     error: (err) => {
-       console.error(err);
-    }
-  });
-}
+  getProduct() {
+    this.userService.getDish().subscribe({
+      next: (response) => {
+        this.dish=Object.entries(response)
+        console.log(this.dish)
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+  }
 }

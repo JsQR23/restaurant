@@ -1,12 +1,12 @@
 
-<div class="grid p-4> div-principal">
+<div class="grid p-4 div-principal">
     <p-card class="form-group" class="col-12 sm:col-12 md:col-10 lg:col-8 xl:col-6 p-2" header="Nuestros clientes">
         <p-table [value]="emails">
             <ng-template pTemplate="body" let-person let-i="index">
                 <tr class="align-centre">
-    <!--person agarra cada array que viene en emails, la posición 1 del array son el email y la contraseña 
-    del usuario. Le decimos que agarre el email-->
-                    <td >{{person[1]?.email}}</td>
+                    <td>{{person[1]?.email}}</td>
+<!--person agarra cada array que viene en emails, la posición 1 del array son el email y la contraseña 
+del usuario. Le decimos que agarre el email-->
                 </tr>
             </ng-template>
         </p-table>

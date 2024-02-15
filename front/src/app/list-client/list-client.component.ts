@@ -25,11 +25,12 @@ export class ListClientComponent {
        next: (response) => {
         //convierte a response en un objeto de strings, cada string es una llave 
         let keys = Object.keys(response);
-        //extrae la última llave de keys y "afirma" que la última llave 
-        //es una de las llaves del reponse:
+        /*extrae la última llave de keys y "afirma" que la última llave 
+        es una de las llaves del reponse:           */
         let lastKey = keys[keys.length - 1] as keyof typeof response;
         delete response[lastKey];
         this.emails = Object.entries(response);
+        console.log(this.emails)
        },
        error: (err) => {
          console.error(err);

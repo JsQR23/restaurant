@@ -7,17 +7,20 @@ import { UserService } from '../service/service.service';
   styleUrls: ['./client-suggests.component.scss']
 })
 export class ClientSuggestsComponent {
+
   dish:Dish={
     nombre:'',
     precio:'',
     img:''
   }
+  
   constructor(private userService: UserService) {}
 
   platoNumber:number=0
+
   createDish(plato:Dish){
     this.platoNumber=+plato.precio
-    console.log(`tipo de la variable precio: ${typeof(this.platoNumber)}`)
+
     this.userService.createDish(plato).subscribe({
       next: (response) => {
         alert(response);
@@ -25,6 +28,7 @@ export class ClientSuggestsComponent {
       error: (err) => {
         console.error(err);
       }
+
    });
   }
 }
