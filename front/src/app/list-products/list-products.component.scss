@@ -1,17 +1,13 @@
-.div-principal{
-    justify-content: center; 
-    text-align:center
-  }
-
-th{
-    text-align: center
-}
-
 img{
-    max-width: 100px;
-    max-height: 100px;
+    height:70px;
+    width:150px;
+
+    object-fit: cover;
+    object-position: center;
 }
 
-div-content{
-    justify-content: center;
+
+.ng-template{
+    margin-left: 8rem;
+    
 }

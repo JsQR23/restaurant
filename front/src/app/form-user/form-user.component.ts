@@ -7,6 +7,7 @@ import { IdService } from '../service/pasar-id.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Session } from '../models/models';
 import { UpdateService } from '../service/update.service';
+
 @Component({
   selector: 'app-form-client',
   templateUrl: './form-user.component.html',
@@ -96,8 +97,6 @@ export class FormUserComponent {
        }
     });
    }
-
-
 
    //variables de apoyo
    handleResponse:any[]=[] //cuando se pide el id, se vienen varios datos con él, por eso necesita-

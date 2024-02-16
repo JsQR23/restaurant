@@ -63,11 +63,12 @@ export class SidebarComponent {
     this.userService.deleteUser(this.id).subscribe({
 
        next: (response) => {
-         alert(response);
-         this.showModal=false
+        alert(response);
+        this.showModal=false
        },
        error: (err) => {
-         console.error(err);
+        this.showModal=false
+        console.error(err);
         
        }
     });

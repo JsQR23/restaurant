@@ -23,7 +23,8 @@ import { UpdateClientComponent } from './update-client/update-client.component';
 import { ClientSuggestsComponent } from './client-suggests/client-suggests.component';
 import { IdService } from './service/pasar-id.service';
 import { UpdateService } from './service/update.service';
-
+import { AboutComponent } from './about/about.component';
+import { ImageModule } from 'primeng/image';
 
 const appRoutes:Routes=[
 ]
@@ -36,7 +37,8 @@ const appRoutes:Routes=[
     ListProductsComponent,
     FormUserComponent,
     UpdateClientComponent,
-    ClientSuggestsComponent
+    ClientSuggestsComponent,
+    AboutComponent
     
   ],
   imports: [
@@ -53,6 +55,7 @@ const appRoutes:Routes=[
     PasswordModule,
     HttpClientModule,
     DialogModule,
+    ImageModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [UserService, IdService,UpdateService],

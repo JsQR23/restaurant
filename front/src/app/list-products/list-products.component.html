@@ -1,21 +1,23 @@
-<div class="grid p-4 div-principal">
+<div class="grid p-4 justify-content-center text-center">
   <p-card header="Los clientes sugieren:" class="col-12 sm:col-12 md:col-10 lg:col-8 xl:col-6 p-2">
     <p-table [value]="dish">
       
       <ng-template pTemplate="header">
-        <tr>
-          <th>Nombre</th>
-          <th>Precio</th>
-          <th>Imagen</th>
+        <tr class="text-center">
+          <th class="text-center">Nombre</th>
+          <th class="text-center">Precio</th>
+          <th class="text-center">Imagen</th>
         </tr>
       </ng-template>
 
       <ng-template pTemplate="body" let-plat let-i="index">
-        <tr *ngIf="plat[1]">
-          <td>{{ plat[1]?.nombre }}</td>
-          <td>{{ plat[1]?.precio }}</td>
-          <td>
-            <img [src]="plat[1]?.img" alt="{{ plat[1]?.img }}">
+        <tr *ngIf="plat[1]" >
+<!--se pone el ? porque quizás el componente se renderice antes de los datos,
+eso impide que haya errores-->
+          <td class="text-center">{{ plat[1]?.nombre }}</td>
+          <td class="text-center">{{ plat[1]?.precio }}</td>
+          <td class="align-content-center">
+            <img  [src]="plat[1]?.img" alt="{{ plat[1]?.img }}">
           </td>
         </tr>
       </ng-template>

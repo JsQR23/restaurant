@@ -23,7 +23,7 @@
         <div class="col">
           <button pButton type="button" 
                   for="card-main" 
-                  class="w-full botones" 
+                  class="w-full botones shadow-4" 
                   (click)="loginUser(user)">Acceder
           </button>
         </div>
@@ -39,36 +39,35 @@
 <p-dialog header="Regístrese" [(visible)]="showModal" [modal]="true">
   <form>
     <div>
-        <input type="text" 
-          id="username" 
-          name="username" 
-          [(ngModel)]="user.email" 
-          placeholder="E-mail"
-          class="mb-3"
-        pInputText>
+      <input type="text" 
+              id="username" 
+              name="username" 
+              [(ngModel)]="user.email" 
+              placeholder="E-mail"
+              class="mb-3"
+      pInputText>
     </div>
 
     <div>
       <input type="password" 
-        id="password" 
-        name="password" 
-        [(ngModel)]="user.password" 
-        placeholder="Contraseña"
+            id="password" 
+            name="password" 
+            [(ngModel)]="user.password" 
+            placeholder="Contraseña"
       pInputText>
     </div>
 
     <button type="button" 
-      pButton label="Aceptar" 
-      class="boton-registrar-aceptar" 
-      (click)="clickCreate()">
+            pButton label="Aceptar" 
+            class="boton-registrar-aceptar" 
+            (click)="clickCreate()">
     </button>
 
     <button type="button" 
-      pButton label="Cancelar" 
-      class="boton-registrar" 
-      (click)="showModal = false">
+            pButton label="Cancelar" 
+            class="boton-registrar-cancelar" 
+            (click)="showModal = false">
     </button>
-
   </form>
 </p-dialog>
 
