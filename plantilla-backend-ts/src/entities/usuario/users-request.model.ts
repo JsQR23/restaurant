@@ -47,8 +47,8 @@ class UserRequest implements IUserRequest {
     }
 
     /**
-     * @description Comprueba las credenciales ingresadas por el usuario, si son validas se retorna el objeto 'LoginResponse' con los datos del usuario
-     * @author: 
+     * @description Comprueba las credenciales ingresadas por el usuario, si son validas se retorna el objeto 'UserResponse' con los datos del usuario
+     * @author: Fabián Quintanar
      * @returns {Promise<UserResponse|null>}
      */
     public async comprobarCredenciales(): Promise<UserResponse | null> {
@@ -97,8 +97,8 @@ class UserRequest implements IUserRequest {
     }
 
     /**
-     * @description Crea un usuario a través del Dao y retorna una instancia de la clase LoginResponse con los datos de éste
-     * @author: 
+     * @description Crea un usuario a través del Dao y retorna una instancia de la clase UserResponse con los datos de éste
+     * @author: Fabián Quintanar 
      * @returns {Promise<UserResponse|null>}
      */
     /**
@@ -150,7 +150,7 @@ class UserRequest implements IUserRequest {
 
     /**
      * @description Elimina un usuario a través de su email, regresa un token y los datos del usuario
-     * @author: 
+     * @author: Fabián Quintanar
      * @returns {Promise<UserResponse|null>}
      */
     /**
@@ -198,7 +198,7 @@ class UserRequest implements IUserRequest {
 
     /**
      * @description Obtiene toda la información de los usuarios y retorna un objeto con sus emails y sus contraseñas
-     * @author: 
+     * @author: Fabián Quintanar
      * @returns {Promise<UserResponse|Object>}
      */
     /**
@@ -235,7 +235,7 @@ class UserRequest implements IUserRequest {
 
     /**
      * @description Obtiene los datos del usuario y también su id. Retorna un objeto
-     * @author: 
+     * @author: Fabián Quintanar
      * @returns {Promise<UserResponse|null>}
      */
     public async obtenerId(): Promise<UserResponse | null> {
@@ -284,8 +284,8 @@ class UserRequest implements IUserRequest {
     }
     
     /**
-     * @description Comprueba las credenciales ingresadas por el usuario, si son validas se retorna el objeto 'LoginResponse' con los datos del usuario
-     * @author: 
+     * @description Comprueba las credenciales ingresadas por el usuario, si son validas se retorna el objeto 'UserResponse' con los datos del usuario
+     * @author: Fabián Quintanar
      * @returns {Promise<UserResponse|null>}
      */
     public async actualizarCredenciales(): Promise<UserResponse | null> {
@@ -318,6 +318,8 @@ class UserRequest implements IUserRequest {
 
     /**
      * @description Valida que los datos de la petición tenga el formato correcto
+     * @author: Fabian Quintanar
+     * @returns {Promise<UserResponse|null>}
      */
     private async validarPeticion() {
         const erroresValidacion = await validate(this);

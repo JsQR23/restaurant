@@ -12,8 +12,6 @@ import LoginResponse from "./login-response.model";
 })
 class LoginController implements IController {
     public path: string = "login";
-
-
     public router: Router = Router();
 
     constructor() {

@@ -1,17 +1,12 @@
-.div-principal {
-  justify-content: center;
-  text-align: center;
-}
-
-th {
-  text-align: center;
-}
-
 img {
-  max-width: 100px;
-  max-height: 100px;
+  height: 70px;
+  width: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
-div-content {
-  justify-content: center;
+.ng-template {
+  margin-left: 8rem;
 }/*# sourceMappingURL=list-products.component.css.map */

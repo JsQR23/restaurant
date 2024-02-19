@@ -20,7 +20,6 @@ class UserController implements IController {
     public router: Router = Router();
 
     constructor() {
-        
         this.inicializarRoutes();
     }
     
@@ -109,8 +108,6 @@ class UserController implements IController {
             next(error);
         }
     }
-
-
 
     /**
      * @description Manda los datos desde una requets hasta el dao para obtener elID de un usuario en particular

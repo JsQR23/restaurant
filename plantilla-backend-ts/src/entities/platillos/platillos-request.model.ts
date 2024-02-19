@@ -46,7 +46,7 @@ class PlatilloRequest implements IPlatilloRequest {
     }
 
     /**
-     * @description Crea un usuario a través del Dao y retorna una instancia de la clase LoginResponse con los datos de éste
+     * @description Crea un usuario a través del Dao y retorna una instancia de la clase PlatillosResponse con los datos de éste
      * @author: 
      * @returns {Promise<PlatilloResponse|null>}
      */

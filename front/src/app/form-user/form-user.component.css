@@ -4,6 +4,10 @@
   justify-content: center;
 }
 
+p-card {
+  min-height: 80vh;
+}
+
 .div-principal {
   justify-content: center;
   text-align: center;
@@ -22,4 +26,7 @@
 
 .boton-registrar-cancelar {
   margin-top: 10px;
+  justify-content: end;
+  background-color: rgb(146, 11, 11);
+  border-color: rgb(146, 11, 11);
 }/*# sourceMappingURL=form-user.component.css.map */

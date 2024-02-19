@@ -25,6 +25,7 @@ import { IdService } from './service/pasar-id.service';
 import { UpdateService } from './service/update.service';
 import { AboutComponent } from './about/about.component';
 import { ImageModule } from 'primeng/image';
+import { PanelModule } from 'primeng/panel';
 
 const appRoutes:Routes=[
 ]
@@ -56,6 +57,7 @@ const appRoutes:Routes=[
     HttpClientModule,
     DialogModule,
     ImageModule,
+    PanelModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [UserService, IdService,UpdateService],
